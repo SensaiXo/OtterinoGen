@@ -7,6 +7,9 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
 import LegalNotice from "./pages/LegalNotice";
+import VatCompliance from "./pages/VatCompliance";
+import ProcessOptimization from "./pages/ProcessOptimization";
+import ChangeManagement from "./pages/ChangeManagement";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/impressum" element={<LegalNotice />} />
+          <Route path="/services/vat-compliance" element={<VatCompliance />} />
+          <Route path="/services/process-optimization" element={<ProcessOptimization />} />
+          <Route path="/services/change-management" element={<ChangeManagement />} />
         </Routes>
       </LanguageProvider>
     </TooltipProvider>
