@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const { t } = useLanguage();
@@ -84,7 +85,8 @@ const Services = () => {
       problem: t('services.service1.problem'),
       solution: t('services.service1.solution'),
       result: t('services.service1.result'),
-      example: t('services.service1.example')
+      example: t('services.service1.example'),
+      path: '/services/vat-compliance'
     },
     {
       icon: Cog,
@@ -92,7 +94,8 @@ const Services = () => {
       problem: t('services.service2.problem'),
       solution: t('services.service2.solution'),
       result: t('services.service2.result'),
-      example: t('services.service2.example')
+      example: t('services.service2.example'),
+      path: '/services/process-optimization'
     },
     {
       icon: Users,
@@ -100,7 +103,8 @@ const Services = () => {
       problem: t('services.service3.problem'),
       solution: t('services.service3.solution'),
       result: t('services.service3.result'),
-      example: t('services.service3.example')
+      example: t('services.service3.example'),
+      path: '/services/change-management'
     }
   ];
 
@@ -118,72 +122,46 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="bg-card border border-border/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group">
-              <CardContent className="p-8 h-full">
-                <div className="flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-8 mx-auto group-hover:bg-primary/20 transition-colors duration-300">
-                  <service.icon className="h-10 w-10 text-primary" />
-                </div>
-                
-                <h3 className="text-2xl font-playfair font-bold text-foreground mb-8 text-center leading-tight">
-                  {service.title}
-                </h3>
-                
-                <div className="space-y-8">
-                  <div className="border-l-4 border-muted pl-6 py-2">
-                    <h4 className="font-lato font-bold text-muted-foreground mb-3 text-sm uppercase tracking-wide">{t('services.problem')}</h4>
-                    <p className="font-lato text-muted-foreground leading-relaxed">{service.problem}</p>
+            <Link to={service.path} key={index} className="block group">
+              <Card className="bg-card border border-border/20 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 h-full">
+                <CardContent className="p-8 h-full">
+                  <div className="flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-8 mx-auto group-hover:bg-primary/20 transition-colors duration-300">
+                    <service.icon className="h-10 w-10 text-primary" />
                   </div>
                   
-                  <div className="border-l-4 border-primary pl-6 py-2">
-                    <h4 className="font-lato font-bold text-primary mb-3 text-sm uppercase tracking-wide">{t('services.solution')}</h4>
-                    <p className="font-lato text-foreground leading-relaxed">
-                      {index === 0 && (
-                        <>
-                          Wij bieden begeleiding in <a href="#btw-compliance" className="text-primary hover:text-warm underline font-semibold">fiscale vertegenwoordiging België</a> en monitoren alle compliance aspecten proactief.
-                        </>
-                      )}
-                      {index === 1 && (
-                        <>
-                          Wij automatiseren workflows, digitaliseren processen en optimaliseren jouw gehele <a href="#procesoptimalisatie" className="text-primary hover:text-warm underline font-semibold">finance operatie en procesoptimalisatie</a>.
-                        </>
-                      )}
-                      {index === 2 && (
-                        <>
-                          Wij begeleiden persoonlijk <a href="#btw-compliance" className="text-primary hover:text-warm underline font-semibold">controllers en CFO&apos;s door elke stap van de transformatie</a>.
-                        </>
-                      )}
-                    </p>
-                  </div>
+                  <h3 className="text-2xl font-playfair font-bold text-foreground mb-8 text-center leading-tight">
+                    {service.title}
+                  </h3>
                   
-                  <div className="border-l-4 border-warm pl-6 py-2">
-                    <h4 className="font-lato font-bold text-warm mb-3 text-sm uppercase tracking-wide">{t('services.benefit')}</h4>
-                    <p className="font-lato text-foreground font-semibold leading-relaxed">
-                      {index === 0 && (
-                        <>
-                          Jij bent 100% compliant, audit-ready en kunt je volledig focussen op <a href="#procesoptimalisatie" className="text-warm hover:text-primary underline">strategie in plaats van administratie</a>.
-                        </>
-                      )}
-                      {index === 1 && (
-                        <>
-                          Jij bespaart 50% tijd, elimineert fouten en krijgt <a href="#expertise" className="text-warm hover:text-primary underline">real-time inzicht in je financiële prestaties</a>.
-                        </>
-                      )}
-                      {index === 2 && (
-                        <>
-                          Jij krijgt volledige team buy-in, soepele implementatie en <a href="#about" className="text-warm hover:text-primary underline">duurzame verandering</a>.
-                        </>
-                      )}
-                    </p>
+                  <div className="space-y-8">
+                    <div className="border-l-4 border-muted pl-6 py-2">
+                      <h4 className="font-lato font-bold text-muted-foreground mb-3 text-sm uppercase tracking-wide">{t('services.problem')}</h4>
+                      <p className="font-lato text-muted-foreground leading-relaxed">{service.problem}</p>
+                    </div>
+                    
+                    <div className="border-l-4 border-primary pl-6 py-2">
+                      <h4 className="font-lato font-bold text-primary mb-3 text-sm uppercase tracking-wide">{t('services.solution')}</h4>
+                      <p className="font-lato text-foreground leading-relaxed">
+                        {service.solution}
+                      </p>
+                    </div>
+                    
+                    <div className="border-l-4 border-warm pl-6 py-2">
+                      <h4 className="font-lato font-bold text-warm mb-3 text-sm uppercase tracking-wide">{t('services.benefit')}</h4>
+                      <p className="font-lato text-foreground font-semibold leading-relaxed">
+                        {service.result}
+                      </p>
+                    </div>
+                    
+                    <div className="bg-accent/10 p-4 rounded-lg border border-accent/20">
+                      <p className="font-lato text-accent font-medium text-sm">
+                        <span className="font-bold text-primary">{t('services.result')}:</span> {service.example}
+                      </p>
+                    </div>
                   </div>
-                  
-                  <div className="bg-accent/10 p-4 rounded-lg border border-accent/20">
-                    <p className="font-lato text-accent font-medium text-sm">
-                      <span className="font-bold text-primary">{t('services.result')}:</span> {service.example}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
         
