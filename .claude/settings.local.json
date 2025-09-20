@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:pagespeed.web.dev)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

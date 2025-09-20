@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Alventis Design System - Donkerblauw/Wit met Warm Terracotta Accent */
+    --background: 0 0% 98%;
+    --foreground: 216 33% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 33% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 33% 20%;
+
+    /* Donkerblauw als primary */
+    --primary: 216 33% 20%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Licht blauw voor secondary */
+    --secondary: 215 25% 95%;
+    --secondary-foreground: 216 33% 20%;
+
+    --muted: 215 25% 96%;
+    --muted-foreground: 216 25% 35%;
+
+    /* Warm terracotta accent */
+    --accent: 18 65% 45%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Warm koper variatie */
+    --warm: 25 70% 40%;
+    --warm-foreground: 0 0% 98%;
+
+    /* Zachte zandkleur */
+    --sand: 35 25% 85%;
+    --sand-foreground: 216 33% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 216 33% 20%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(216 33% 20%) 0%, hsl(216 25% 35%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(18 65% 55%) 0%, hsl(25 70% 50%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(216 33% 20% / 0.1);
+    --shadow-medium: 0 8px 30px -4px hsl(216 33% 20% / 0.15);
+    
+    /* Transition durations */
+    --transition-fast: 150ms;
+    --transition-normal: 200ms;
+    --transition-slow: 300ms;
+    
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 216 33% 15%;
+    --foreground: 0 0% 95%;
+
+    --card: 216 28% 18%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 216 28% 18%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 216 33% 20%;
+
+    --secondary: 216 20% 25%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 216 20% 25%;
+    --muted-foreground: 215 15% 80%;
+
+    --accent: 18 65% 55%;
+    --accent-foreground: 0 0% 95%;
+
+    --warm: 25 70% 50%;
+    --warm-foreground: 0 0% 95%;
+
+    --sand: 35 15% 30%;
+    --sand-foreground: 0 0% 95%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 216 20% 25%;
+    --input: 216 20% 25%;
+    --ring: 18 65% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent layout shifts during image loading */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Ensure consistent font rendering to prevent layout shifts */
+  body {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-display: swap;
+    /* Prevent invisible text during font load */
+    font-synthesis: none;
+    text-rendering: optimizeSpeed;
+  }
+  
+  .font-playfair {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-display: swap;
+  }
+  
+  .font-lato {
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-display: swap;
+  }
+  
+/* Enhanced hover transitions for all interactive elements */
+.hover-scale {
+  transition: transform var(--transition-normal) ease-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Button hover enhancements */
+.btn, button, [role="button"] {
+  transition: all var(--transition-normal) ease-out;
+}
+
+.btn:hover, button:hover, [role="button"]:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Link hover enhancements */
+a {
+  transition: color var(--transition-fast) ease-out;
+}
+
+/* Card hover enhancements */
+.card {
+  transition: all var(--transition-normal) ease-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Navigation mobile styles */
+.navigation-mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+}
+}
